@@ -1010,6 +1010,8 @@ def main():
     parser.add_argument("--version", action="version",
                         version='%s version %s' %
                         (os.path.split(sys.argv[0])[-1], get_version()))
+    parser.add_argument("-w", "--reviewer", action="append",
+                        help="Specify a reviewer for this patch.")
     parser.add_argument("branch", nargs="?")
 
     try:
@@ -1116,6 +1118,14 @@ def main():
             run_command(regenerate_cmd,
                         GIT_EDITOR="sed -i -e "
                         "'/^Change-Id:/d'")
+
+    if options.reviewer:
+        domain = config.get("domain")
+        if domain:
+            for r in options.rewiewer:
+                if not r.endswith(domain):
+                    r += "@{}".format(domain)
+        cmd += "%{}".format(",".join("r={}".format(r) for r in options.reviewer))
 
     if options.dry:
         print("Please use the following command "
