@@ -1126,7 +1126,7 @@ def main():
                 if domain and not r.endswith(domain):
                     r += "@" + domain
                 yield "r={}".format(r)
-        cmd += "%" + ",".join(reviewers()))
+        cmd += "%" + ",".join(reviewers())
 
     if options.dry:
         print("Please use the following command "
