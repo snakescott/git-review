@@ -11,3 +11,9 @@ ChangeLog
 *.egg
 *.egg-info
 *.pyc
+*.gem
+*~
+
+/.idea
+/tmp
+/Gemfile.lock
