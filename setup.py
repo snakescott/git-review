@@ -17,5 +17,4 @@
 import setuptools
 
 
-setuptools.setup(setup_requires=['pbr>=0.5.21,<1.0'],
-                 pbr=True)
+setuptools.setup(version='1.23-p1', setup_requires=['pbr>=0.5.21,<1.0'], pbr=True)
